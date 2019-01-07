@@ -1,0 +1,5 @@
+﻿网站入口：http://localhost/transport/public/index/index/index
+用户名：13403991030   zxy1218
+
+管理员平台入口：http://localhost/transport/public/index.php/admin/login/login
+用户名：admins  admins

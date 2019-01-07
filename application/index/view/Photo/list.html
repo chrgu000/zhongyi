@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>中医科普网站--中医图谱</title>
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/style1.css">
+</head>
+<style type="text/css">
+.menu4{
+	width: 960px;
+	height: auto;
+	margin:auto;
+}
+</style>
+<body>	
+<div class="main">
+	<!-- 引用公共头部 -->
+	{include file="common/header" /}
+	<div class="container">
+		<div class="menu4">
+			<div class="title02 mb20">
+				<span>历代名医</span>
+			</div>
+			<div class="zy-lbox mb20">
+				<div class="zy-tab02">
+					<div class="y-vbox" style="display:block;">
+						<ul>
+							{volist name="doctor" id="v1"}
+								<li>
+									<a href="{:url('Photo/detail',array('id'=>$v1['id']))}" target="_blank">
+										<img src="__IMG__/{$v1.image}" border="0">
+									</a>
+									<span>bg</span>
+									<p><a href="{:url('Photo/detail',array('id'=>$v1['id']))}" target="_blank">{$v1.name}</a></p>
+								</li>
+							{/volist}
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="title02 mb20">
+				<span>中国古籍</span>
+			</div>
+			<div class="zy-lbox mb20">
+				<div class="zy-tab02">
+					<div class="y-vbox" style="display:block;">
+						<ul>
+							{volist name="book" id="v2"}
+								<li>
+									<a href="{:url('Photo/detail1',array('id'=>$v2['id']))}" target="_blank">
+										<img src="__IMG__/{$v2.image}" border="0">
+									</a>
+									<span>bg</span>
+									<p>
+										<a href="{:url('Photo/detail1',array('id'=>$v2['id']))}" target="_blank">{$v2.name}</a>
+									</p>
+								</li>
+							{/volist}
+						</ul>	
+					</div>
+				</div>
+			</div>
+			<div class="title02 mb20">
+				<span>药材图谱</span>
+			</div>
+			<div class="mt20">
+				<div class="zy-lbox">
+					<div class="m-yc02 mt20">
+						<ul>
+							{volist name="medicine" id="v3"}
+								<li class="p01">
+		                          	<p><a href="{:url('Photo/detail2',array('id'=>$v3['id']))}" target="_blank">{$v3.name}</a></p>
+								</li>
+							{/volist}
+						</ul>
+				  	</div>
+				</div>
+			</div>
+			<div class="title02 mb20">
+				<span>穴位图谱</span>
+			</div>
+			<div class="zy-lbox mb20">
+				<div class="zy-tab02">
+					<div class="y-vbox" style="display:block;">
+						<ul>
+							{volist name="xuewei" id="v4"}
+								<li>
+									<a href="{:url('Photo/detail3',array('id'=>$v4['id']))}" target="_blank">
+										<img src="__IMG__/{$v4.image}" border="0">
+									</a>
+									<span>bg</span>
+									<p>
+										<a href="{:url('Photo/detail3',array('id'=>$v4['id']))}" target="_blank">{$v4.name}</a>
+									</p>
+								</li>
+							{/volist}
+						</ul>	
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="footer">
+			<div class="col-md-12 text-center">
+				<p><small>&copy; All Rights Reserved.<a href="index.html" target="_blank" title="中医科普网站">中医科普网站</a></small></p>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>中医科普网站——论坛</title>
+        <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/style1.css">
+        <link type="text/css" rel="stylesheet" href="__PUBLIC__/css/page.css"/>
+        <script type="text/javascript" src="__PUBLIC__/js/jquery.simplePagination.js"></script>
+</head>
+<body>	
+<div class="main">
+    <!-- 引用公共头部 -->
+    {include file="common/header" /}
+    <div class="container">
+        <div class="wrap">
+            <div id="content">
+                <div class="con">
+                    <div style="margin-top: 10px;">
+                        <a href="{:url('Talk/add')}">
+                            <div style="border: 1px solid; border-radius: 10px;width: 90px; height: 40px; background-color: #b93e2a; ">
+                                <p style="margin-top: 5px;margin-left: 13px; color: #fff;">发布论坛</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div style="float: right;">
+                        <form action="{:url('Talk/lst')}" method="post">       
+                            <input type="text" class="input-text" style="width:200px;height: 30px;" placeholder="请输入您想查询的论坛消息" name="keywords">
+                            <button type="submit" class="btn btn-success" style="height: 30px;">查询</button>
+                        </form>
+                    </div>
+                    <div>
+                        <h3>论坛消息列表</h3>
+                        {volist name="list" id="vo" empty="<p class='nulltext'>暂无相关信息</p>"}
+                            <a href="{:url('Talk/detail',array('id'=>$vo['id']))}">
+                                <div>
+                                    <span>{$vo.title}</span>
+                                    <span style="float: right;">{$vo.user}&nbsp;&nbsp;{$vo.time}</span>
+                                </div>
+                            </a>
+                            <div class="desc"></div>
+                        {/volist}
+                    </div>
+                    <div class="pages">
+                        <div id="paging1" class="page light-theme simple-pagination">
+                            <div class="pageinput" style="">
+                                {$page}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+    		<div class="col-md-12 text-center">
+                <p><small>&copy; All Rights Reserved.<a href="index.html" target="_blank" title="中医科普网站">中医科普网站</a></small></p>
+            </div>
+    	</div>
+    </div>
+</div>
+</body>
+</html>

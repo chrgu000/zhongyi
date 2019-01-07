@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>中医科普网站--学习园地</title>
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/style1.css">
+</head>
+<style type="text/css">
+.menu4{
+	width: 960px;
+	height: auto;
+	margin:auto;
+}
+</style>
+<body>	
+<div class="main">
+	<!-- 引用公共头部 -->
+	{include file="common/header" /}
+	<div class="container">
+		<div class="menu4">
+			<div class="title02 mb20">
+				<span>视频学习</span>
+			</div>
+			<div class="zy-lbox mb20">
+				<div class="zy-tab02">
+					<div class="y-vbox" style="display:block;">
+		                <ul>
+							{volist name="video" id="vo"}
+			                	<li style="width: 200px;height: 180px;">
+			                		<video width="200" height="160" controls style="margin-top: -5px;">
+										<source src="__ROOT__{$vo.url}" type="video/mp4">
+									</video>
+			                		<span>bg</span>
+			                		<p><a href="">{$vo.name}</a></p>
+			                	</li>
+			                {/volist}
+		                </ul>
+		                </div>
+					</div>
+				</div>
+			</div>
+			<div class="menu4">
+				<div class="title02 mb20">
+					<span>课件讲义</span>
+				</div>
+				<div class="zy-lbox mb20">
+				    <div>
+			            <ul>
+			            	{volist name="file" id="v1"}
+			            		<li>
+			            			<a href="{:url('Study/download',array('id'=>$v1.id))}"><p>{$v1.name}</p></a>
+			            		</li>
+			            	{/volist}
+			            </ul>
+			        </div>
+				</div>
+			</div>
+			<div class="menu4">
+				<div class="title02 mb20">
+					<span>中医小百科</span>
+				</div>
+				<div class="zy-lbox mb20">
+				    <div>
+			            <ul>
+			            	{volist name="article" id="v2"}
+			            		<li>
+			            			<a href="{:url('Study/detail',array('id'=>$v2.id))}"><p>
+			            			小百科名称：{$v2.name}</p></a>
+			            		</li>
+			            	{/volist}
+			            </ul>
+			        </div>
+				</div>
+			</div>
+			<div class="footer">
+				<div class="col-md-12 text-center">
+					<p><small>&copy; All Rights Reserved.<a href="index.html" target="_blank" title="中医科普网站">中医科普网站</a></small></p>
+				</div>
+			</div>
+		</div>
+			
+		</div>
+	</div>
+</div>
+</body>
+</html>

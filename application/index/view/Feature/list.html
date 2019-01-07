@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>中医科普网站--中医特色</title>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/css/style1.css">
+</head>
+<body>
+	<style type="text/css">
+</style>
+<body>	
+<div class="main">
+    <!-- 引用公共头部 -->
+    {include file="common/header" /}
+    <div class="container">
+        <div class="wrap">
+            <div id="content">
+                <h2></h2><h1>中医特色</h1><h2></h2>
+                <div class="con">
+                    <!-- 读取特色总描述 -->
+                    <p>{$text.text}</p>
+                    <div class="desc"></div>
+                    {volist name="feature" id="vo"}
+                        <a href="{:url('Feature/detail',array('id'=>$vo['id']))}" title="查看详情"><h3 style="text-align: center;">{$vo.title}</h3>
+                        <div style="text-align: center;">
+                            <img src="__IMG__/{$vo.image}" >
+                        </div>
+                        </a>
+                        {$vo.text}
+                        <div class="desc"></div>
+                    {/volist}
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="col-md-12 text-center">
+                <p><small>&copy; All Rights Reserved.<a href="index.html" target="_blank" title="中医科普网站">中医科普网站</a></small></p>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

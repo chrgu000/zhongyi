@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>中医科普网站--药材图谱</title>
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/style1.css">
+</head>
+<body>	
+<div class="main">
+    <!-- 引用公共头部 -->
+    {include file="common/header" /}
+    <div class="container">
+        <div class="wrap">
+            <div id="content">
+                <div class="con">
+                    <h2>疑难杂症</h2>
+                    <div style="text-align: center;margin-top: 10px;">
+                        <form action="{:url('Difficult/lst')}" method="post">       
+                            <input type="text" class="input-text" style="width:200px;height: 30px;" placeholder="请输入您想查询的杂症名称" name="keywords">
+                            <button type="submit" class="btn btn-success" style="height: 30px;">查询</button>
+                        </form>
+                    </div>
+                    <!-- 循环读取一级分类和二级分类 -->
+                    {volist name="difficult" id="v1" empty="<p class='nulltext'>暂无相关信息</p>"}
+                        <h3>{$v1.typename}</h3>   <!-- 一级分类的名字 -->
+                        <!-- <ul> -->
+                            {volist name="difficult1" id="v2"}
+                                <!-- 判断二级分类的上级id是否等于一级分类的id -->
+                                {if condition=" $v2['parent_id'] eq $v1['id'] "}  
+                                    <!-- 二级分类的名字 -->
+                                    <!-- <li> -->
+                                       <a href="{:url('Difficult/detail',array('id'=>$v2['id']))}">{$v2.typename}</a> 
+                                    <!-- </li> -->
+                                {/if} 
+                            {/volist}
+                        <!-- </ul> -->
+                    {/volist}
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="col-md-12 text-center">
+                <p><small>&copy; All Rights Reserved.<a href="index.html" target="_blank" title="中医科普网站">中医科普网站</a></small></p>
+            </div>
+    	</div>
+    </div>
+</div>
+</body>
+</html>

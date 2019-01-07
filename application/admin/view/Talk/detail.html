@@ -1,0 +1,108 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="renderer" content="webkit|ie-comp|ie-stand">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="lib/html5.js"></script>
+<script type="text/javascript" src="lib/respond.min.js"></script>
+<script type="text/javascript" src="lib/PIE_IE678.js"></script>
+<![endif]-->
+<link rel="icon" href="" type="image/x-icon"/>
+<link href="__PUBLIC__/css/H-ui.min.css" rel="stylesheet" type="text/css" />
+<link href="__PUBLIC__/css/H-ui.admin.css" rel="stylesheet" type="text/css" />
+<link href="__PUBLIC__/lib/icheck/icheck.css" rel="stylesheet" type="text/css" />
+<link href="../../../../../static/admin/lib/Hui-iconfont/1.0.1/iconfont.css" rel="stylesheet" type="text/css" />
+<!--[if IE 6]>
+<script type="text/javascript" src="http://lib.h-ui.net/DD_belatedPNG_0.0.8a-min.js" ></script>
+<script>DD_belatedPNG.fix('*');</script>
+<![endif]-->
+<title>论坛信息详情查看</title>
+</head>
+<body>
+    
+<div class="pd-20">
+	<form action="" method="post" class="form form-horizontal" id="form-admin-add">
+	    <div class="row cl">
+			<label class="form-label col-3">消息标题:</label>
+			<div class="formControls col-5">
+				<input name="title" type="text" class="input-text" value="{$list.title}" readonly="true">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-3">消息内容:</label>
+			<div class="formControls col-5">
+				<textarea name="content" class="textarea" dragonfly="true" readonly="true" onKeyUp="textarealength(this,300)">{$list.content}</textarea>
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-3">发布人:</label>
+			<div class="formControls col-5">
+				<input name="user" type="text" class="input-text" value="{$list.user}" readonly="true">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-3">发布时间:</label>
+			<div class="formControls col-5">
+				<input name="time" type="text" class="input-text" value="{$list.time}" readonly="true">
+			</div>
+		</div>
+		<div class="row cl">
+			<label class="form-label col-3"><h4>回复内容</h4></label>
+			<div class="formControls col-5">
+				
+			</div>
+		</div>
+		{if $list1}
+	        {volist name="list1" id="vo"}
+				<div class="row cl">
+					<label class="form-label col-3">
+						<a title="删除此条回复内容" href="{:url('Talk/del1',array('id'=>$vo['id']))}"  onclick="return confirm('确定要删除此条回复内容吗？')" class="ml-5" 
+	                       style="text-decoration:none"><i class="Hui-iconfont">&#xe6e2;</i></a>
+	                </label>
+					<div class="formControls col-5">
+						<p>内容：{$vo.content}</p>
+			            <p>回复人：{$vo.user}&nbsp;&nbsp;&nbsp;&nbsp;{$vo.time}</p>
+			            <hr style="height:1px;border:none;border-top:1px dashed #0066CC;" />
+					</div>
+				</div>
+	        {/volist}
+	    {/if}
+	</form>
+</div>
+<script type="text/javascript" src="__PUBLIC__/lib/jquery/1.9.1/jquery.min.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/lib/icheck/jquery.icheck.min.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/lib/Validform/5.3.2/Validform.min.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/lib/layer/1.9.3/layer.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/js/H-ui.js"></script> 
+<script type="text/javascript" src="__PUBLIC__/js/H-ui.admin.js"></script> 
+<script type="text/javascript">
+$(function(){
+	$('.skin-minimal input').iCheck({
+		checkboxClass: 'icheckbox-blue',
+		radioClass: 'iradio-blue',
+		increaseArea: '20%'
+	});
+	
+	$("#form-admin-add").Validform({
+		tiptype:2,
+		callback:function(form){
+			form[0].submit();
+			var index = parent.layer.getFrameIndex(window.name);
+			parent.$('.btn-refresh').click();
+			parent.layer.close(index);
+		}
+	});
+
+	$('.userimg').hover(function(){
+		$(this).next('.userimg1').show();
+	},function(){
+		$(this).next('.userimg1').hide();
+	})
+});
+</script>
+</body>
+</html>
