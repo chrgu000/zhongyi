@@ -6,5 +6,11 @@
 test 14:34
 develop 3333
 master can`t see
+<<<<<<< HEAD
 master write
+=======
+dev write
+
+
+>>>>>>> dev
 
